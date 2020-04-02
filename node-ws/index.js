@@ -3,7 +3,7 @@
 const express = require('express');
 const path = require('path');
 const { createServer } = require('http');
-const WebSocket = require('../../');
+const WebSocket = require('ws');
 const app = express();
 app.use(express.static(path.join(__dirname, '/public')));
 
@@ -21,6 +21,6 @@ wss.on('connection', function(ws) {
     });
 });
 
-server.listen(80,'0.0.0.0', function() {
-  console.log('Listening on http://0.0.0.0:80');
+server.listen(8080,'0.0.0.0', function() {
+  console.log('Listening on http://0.0.0.0:8080');
 });

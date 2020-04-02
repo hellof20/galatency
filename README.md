@@ -1,6 +1,6 @@
 # galatency
 
-用于对比客户端直接访问应用和通过GA访问应用之间的延迟差异
+用于对比客户端直接访问应用和通过GA访问应用之间的延迟差异 
 分为两部分：
 - nodejs的web服务
 返回客户端index.html
@@ -13,9 +13,9 @@
 写入ddb
 
 ## 安装依赖
-...
+```
 cd node-ws
 npm i
 cd python-flask
 pip install -r requirements.txt
-...
+```

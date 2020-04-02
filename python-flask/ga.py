@@ -3,7 +3,6 @@ from flask import Flask
 from flask import request,render_template
 from flask import jsonify
 from flask_cors import CORS
-import requests
 import ipinfo
 import json
 import datetime
@@ -51,4 +50,4 @@ def data():
 
 if __name__ == "__main__":
     app.config['JSON_AS_ASCII'] = False
-    app.run(host='0.0.0.0', port='8888')
+    app.run(host='0.0.0.0', port='8081')

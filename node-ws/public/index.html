@@ -6,7 +6,7 @@
   <body>
     <script>
     function latency() {
-	    var directurl = 'ws://54.255.250.157'
+	    var directurl = 'ws://18.136.23.119'
 	    var gaurl = 'ws://a5afa19a3df50e43a.awsglobalaccelerator.com'
         const directws = new WebSocket(directurl);
 	    const gaws = new WebSocket(gaurl);
@@ -35,7 +35,7 @@
         if(!isNaN(directlatency)&& !isNaN(galatency)){
 	        $("p#galatency").html("GA延迟: "+galatency);
 	        $("p#directlatency").html("Direct延迟: "+directlatency);
-	        var url = "http://54.255.250.157:8888/data"
+	        var url = "http://18.136.23.119:8081/data"
 	        var request = new XMLHttpRequest();
 	        request.open("POST", url);
 	        var latencydata = {"directlatency":directlatency,"galatency":galatency};

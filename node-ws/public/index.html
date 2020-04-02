@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	  <script src="jquery.min.js"></script>
+  </head>
+  <body>
+    <script>
+    function latency() {
+	    var directurl = 'ws://54.255.250.157'
+	    var gaurl = 'ws://a5afa19a3df50e43a.awsglobalaccelerator.com'
+        const directws = new WebSocket(directurl);
+	    const gaws = new WebSocket(gaurl);
+        
+	    directws.onopen = function(event){
+            directstart = new Date().getTime();
+            directws.send('test');
+	    }
+        directws.onmessage = function(event) {
+  	        directlatency = new Date().getTime() -directstart;
+	        console.log("directlatency = "+directlatency)
+        };
+	    
+	    gaws.onopen = function(event){
+            gastart = new Date().getTime();
+            gaws.send('test');
+	    }
+        gaws.onmessage = function(event) {
+  	        galatency = new Date().getTime() -gastart;
+	        console.log("galatency = "+galatency)
+        }
+    }
+
+    setInterval(function() {
+        latency()
+        if(!isNaN(directlatency)&& !isNaN(galatency)){
+	        $("p#galatency").html("GA延迟: "+galatency);
+	        $("p#directlatency").html("Direct延迟: "+directlatency);
+	        var url = "http://54.255.250.157:8888/data"
+	        var request = new XMLHttpRequest();
+	        request.open("POST", url);
+	        var latencydata = {"directlatency":directlatency,"galatency":galatency};
+	        request.send(JSON.stringify(latencydata));
+        }
+    },2000)
+
+    </script>
+    <p id='galatency'>GA延迟: 0</p>
+	<p id='directlatency'>Direct延迟: 0</p>
+  </body>
+</html>

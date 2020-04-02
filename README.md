@@ -21,10 +21,13 @@ cd python-flask
 pip install -r requirements.txt
 ```
 
-## 开启应用
+## 开启web应用
 ```
 cd node-ws
 node index.js
 cd python-flask
 python ga.py
 ```
+
+## 测试应用
+在客户端打开浏览器输入 http://服务器ip:8080/

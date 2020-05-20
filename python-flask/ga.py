@@ -7,6 +7,7 @@ import ipinfo
 import json
 import datetime
 import boto3
+import uuid
 
 app = Flask(__name__,template_folder='/root/templates', static_folder='/root/statics')
 CORS(app)
@@ -34,12 +35,13 @@ def data():
     dynamodb = boto3.resource('dynamodb', region_name='ap-southeast-1')
     table = dynamodb.Table('latency')
     response = table.put_item(
-      Item={
+    Item={
+        'id': str(uuid.uuid1()),
         'ip':userdata['ip'],
         'time':userdata['time'],
         'city':userdata['city'],
-        'directlatency': userdata['directlatency'],
-        'galatency':userdata['galatency'],
+        'latencyType': userdata['latencyType'],
+        'latency':userdata['latency'],
         'org': userdata['org'],
         'country_name': userdata['country_name'],
         'region': userdata['region']

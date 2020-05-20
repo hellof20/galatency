@@ -1,50 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-	  <script src="jquery.min.js"></script>
-  </head>
+  <!-- <head><script src="jquery.min.js"></script></head> -->
   <body>
     <script>
-    function latency() {
-	    var directurl = 'ws://18.136.23.119'
-	    var gaurl = 'ws://a5afa19a3df50e43a.awsglobalaccelerator.com'
-        const directws = new WebSocket(directurl);
-	    const gaws = new WebSocket(gaurl);
-        
-	    directws.onopen = function(event){
-            directstart = new Date().getTime();
-            directws.send('test');
-	    }
-        directws.onmessage = function(event) {
-  	        directlatency = new Date().getTime() -directstart;
-	        console.log("directlatency = "+directlatency)
-        };
-	    
-	    gaws.onopen = function(event){
-            gastart = new Date().getTime();
-            gaws.send('test');
-	    }
-        gaws.onmessage = function(event) {
-  	        galatency = new Date().getTime() -gastart;
-	        console.log("galatency = "+galatency)
-        }
-    }
+      function senddata(latencyType,latency){
+        var url = "http://54.216.197.249:8081/data"
+        var request = new XMLHttpRequest();
+        request.open("POST", url);
+        var latencydata = {"latencyType": latencyType,"latency": latency};
+        request.send(JSON.stringify(latencydata));
+      }
 
-    setInterval(function() {
-        latency()
-        if(!isNaN(directlatency)&& !isNaN(galatency)){
-	        $("p#galatency").html("GA延迟: "+galatency);
-	        $("p#directlatency").html("Direct延迟: "+directlatency);
-	        var url = "http://18.136.23.119:8081/data"
-	        var request = new XMLHttpRequest();
-	        request.open("POST", url);
-	        var latencydata = {"directlatency":directlatency,"galatency":galatency};
-	        request.send(JSON.stringify(latencydata));
-        }
-    },2000)
+      var directurl = 'ws://54.216.197.249'
+      var gaurl = 'ws://a07bbeb186c5678d7.awsglobalaccelerator.com'
+      var cdnurl = 'ws://d2vn4msflecgbi.cloudfront.net'
+      const directws = new WebSocket(directurl);
+      const gaws = new WebSocket(gaurl);
+      const cdnws = new WebSocket(cdnurl);
+      // gaws.onopen = function(event){
+      //   gastart = new Date().getTime();
+      //   gaws.send('test');
+      // }
+      // directws.onopen = function(event){
+      //   directstart = new Date().getTime();
+      //   directws.send('test');
+      // }
+      directws.onmessage = function(event) {
+        directlatency = new Date().getTime() - directstart;
+        console.log("directlatency = "+directlatency)
+        // $("p#directlatency").html("直连延迟: "+directlatency);
+        document.getElementById('directlatency').innerHTML = "直连延迟: "+directlatency
+        senddata('direct',directlatency)
+      };
+      gaws.onmessage = function(event) {
+        galatency = new Date().getTime() - gastart;
+        console.log("galatency = "+galatency)
+        // $("p#galatency").html("GA延迟: "+galatency);
+        document.getElementById('galatency').innerHTML = "GA延迟: "+galatency
+        senddata('ga',galatency)
+      };
+      cdnws.onmessage = function(event) {
+        cdnlatency = new Date().getTime() - cdnstart;
+        console.log("cdnlatency = "+cdnlatency)
+        // $("p#cdnlatency").html("cloudfront延迟: "+cdnlatency);
+        document.getElementById('cdnlatency').innerHTML = "cloudfront延迟: "+cdnlatency
+        senddata('cdn',cdnlatency)
+      };
 
+      setInterval(function() {
+        gastart = new Date().getTime();
+        gaws.send('test');
+        directstart = new Date().getTime();
+        directws.send('test');
+        cdnstart = new Date().getTime();
+        cdnws.send('test');
+      },2500)
     </script>
-    <p id='galatency'>GA延迟: 0</p>
-	<p id='directlatency'>Direct延迟: 0</p>
+    <p id='galatency'>GA延迟: 测试中...</p>
+    <p id='directlatency'>直连延迟: 测试中...</p>
+    <p id='cdnlatency'>cloudfront延迟: 测试中...</p>
   </body>
 </html>

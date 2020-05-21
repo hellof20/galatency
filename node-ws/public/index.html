@@ -1,63 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+      <style>
+          .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+          }
+          </style>
+  </head>
   <!-- <head><script src="jquery.min.js"></script></head> -->
   <body>
-    <script>
-      function senddata(latencyType,latency){
-        var url = "http://54.216.197.249:8081/data"
-        var request = new XMLHttpRequest();
-        request.open("POST", url);
-        var latencydata = {"latencyType": latencyType,"latency": latency};
-        request.send(JSON.stringify(latencydata));
-      }
-
-      var directurl = 'ws://54.216.197.249'
-      var gaurl = 'ws://a07bbeb186c5678d7.awsglobalaccelerator.com'
-      var cdnurl = 'ws://d2vn4msflecgbi.cloudfront.net'
-      const directws = new WebSocket(directurl);
-      const gaws = new WebSocket(gaurl);
-      const cdnws = new WebSocket(cdnurl);
-      // gaws.onopen = function(event){
-      //   gastart = new Date().getTime();
-      //   gaws.send('test');
-      // }
-      // directws.onopen = function(event){
-      //   directstart = new Date().getTime();
-      //   directws.send('test');
-      // }
-      directws.onmessage = function(event) {
-        directlatency = new Date().getTime() - directstart;
-        console.log("directlatency = "+directlatency)
-        // $("p#directlatency").html("直连延迟: "+directlatency);
-        document.getElementById('directlatency').innerHTML = "直连延迟: "+directlatency
-        senddata('direct',directlatency)
-      };
-      gaws.onmessage = function(event) {
-        galatency = new Date().getTime() - gastart;
-        console.log("galatency = "+galatency)
-        // $("p#galatency").html("GA延迟: "+galatency);
-        document.getElementById('galatency').innerHTML = "GA延迟: "+galatency
-        senddata('ga',galatency)
-      };
-      cdnws.onmessage = function(event) {
-        cdnlatency = new Date().getTime() - cdnstart;
-        console.log("cdnlatency = "+cdnlatency)
-        // $("p#cdnlatency").html("cloudfront延迟: "+cdnlatency);
-        document.getElementById('cdnlatency').innerHTML = "cloudfront延迟: "+cdnlatency
-        senddata('cdn',cdnlatency)
-      };
-
-      setInterval(function() {
-        gastart = new Date().getTime();
-        gaws.send('test');
-        directstart = new Date().getTime();
-        directws.send('test');
-        cdnstart = new Date().getTime();
-        cdnws.send('test');
-      },2500)
-    </script>
-    <p id='galatency'>GA延迟: 测试中...</p>
-    <p id='directlatency'>直连延迟: 测试中...</p>
-    <p id='cdnlatency'>cloudfront延迟: 测试中...</p>
+    <script src="testing.js"></script>
+    <form>
+        Select AWS Region for Testing:
+        <select id="region">
+          <option value="Ireland">Ireland</option>
+        </select>
+      </form>
+    <button class="button" onclick="startTesting();">START TESTING</button>
+    <button class="button" onclick="stopTesting();">STOP TESTING</button>
+    <p id='directlatency'>Latency of Direct Connect: 0ms</p>
+    <p id='galatency'>Latency of Using GA: 0ms</p>
+    <p id='cdnlatency'>Latency of Using Cloudfront: 0ms</p>
   </body>
 </html>

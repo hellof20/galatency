@@ -15,21 +15,78 @@
             cursor: pointer;
           }
           </style>
+          <style>
+            div{ float: left; margin: 20px}
+          </style>
   </head>
   <!-- <head><script src="jquery.min.js"></script></head> -->
   <body>
     <script src="testing.js"></script>
-    <form>
+    <!-- <form>
         Select AWS Region for Testing:
         <select id="region">
           <option value="Ireland">Ireland</option>
           <option value="Singapore">Singapore</option>
         </select>
-      </form>
+      </form> -->
+    <div>
+      <h2>Frankfurt Region</h2>
+      <p id='frankfurt_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
+      <p id='frankfurt_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
+      <p id='frankfurt_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>
+    </div>
+
+    <div>
+      <h2>Ireland Region</h2>
+      <p id='ireland_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
+      <p id='ireland_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
+      <p id='ireland_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>
+    </div>
+
+    <div>
+      <h2>Tokyo Region</h2>
+      <p id='tokyo_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
+      <p id='tokyo_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
+      <p id='tokyo_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>  
+    </div>
+
+    <div>
+      <h2>Singapore Region</h2>
+      <p id='singapore_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
+      <p id='singapore_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
+      <p id='singapore_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>  
+    </div>
+    
+    <div>
+      <h2>Virginia Region</h2>
+      <p id='virginia_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
+      <p id='virginia_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
+      <p id='virginia_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>  
+    </div>
+
+    <div>
+      <h2>Oregon Region</h2>
+      <p id='oregon_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
+      <p id='oregon_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
+      <p id='oregon_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>  
+    </div>
+    
+    <div>
+      <h2>HongKong Region</h2>
+      <p id='hongkong_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
+      <p id='hongkong_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
+      <p id='hongkong_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>  
+    </div>
+    
+    <div>
+      <h2>Bahrain Region</h2>
+      <p id='bahrain_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
+      <p id='bahrain_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
+      <p id='bahrain_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>  
+    </div>
+    
     <button class="button" onclick="startTesting();">START TESTING</button>
-    <button class="button" onclick="stopTesting();">STOP TESTING</button>
-    <p id='directlatency'>Latency of Direct Connect: 0ms</p>
-    <p id='galatency'>Latency of Using GA: 0ms</p>
-    <p id='cdnlatency'>Latency of Using Cloudfront: 0ms</p>
+    <button class="button" onclick="stopTesting();">STOP TESTING</button> 
+
   </body>
 </html>

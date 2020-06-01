@@ -12,8 +12,7 @@ const wss = new WebSocket.Server({ server });
 
 wss.on('connection', function(ws) {
     ws.on('message', function (message) {
-        ws.send('xx',function(){
-            
+        ws.send('repsonse',function(){
         })
     })
     ws.on('close', function() {

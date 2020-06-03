@@ -26,7 +26,7 @@ const tokyo_directws = new WebSocket(tokyo_directurl);
 const tokyo_gaws = new WebSocket(tokyo_gaurl);
 const tokyo_cdnws = new WebSocket(tokyo_cdnurl);
 
-var singapore_directurl = 'ws://54.216.197.249'
+var singapore_directurl = 'ws://52.221.184.239'
 var singapore_gaurl = 'ws://a07bbeb186c5678d7.awsglobalaccelerator.com'
 var singapore_cdnurl = 'ws://d2vn4msflecgbi.cloudfront.net'
 const singapore_directws = new WebSocket(singapore_directurl);

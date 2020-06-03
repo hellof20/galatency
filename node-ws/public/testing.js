@@ -1,13 +1,13 @@
 function senddata(latencyType,latency){
-    var url = "http://54.216.197.249:8081/data"
+    var url = "http://:8081/data"
     var request = new XMLHttpRequest();
     request.open("POST", url);
     var latencydata = {"latencyType": latencyType,"latency": latency};
     request.send(JSON.stringify(latencydata));
 }
-var frankfurt_directurl = 'ws://54.216.197.249'
-var frankfurt_gaurl = 'ws://a07bbeb186c5678d7.awsglobalaccelerator.com'
-var frankfurt_cdnurl = 'ws://d2vn4msflecgbi.cloudfront.net'
+var frankfurt_directurl = 'ws://'
+var frankfurt_gaurl = 'ws://'
+var frankfurt_cdnurl = 'ws://'
 const frankfurt_directws = new WebSocket(frankfurt_directurl);
 const frankfurt_gaws = new WebSocket(frankfurt_gaurl);
 const frankfurt_cdnws = new WebSocket(frankfurt_cdnurl);
@@ -19,44 +19,44 @@ const ireland_directws = new WebSocket(ireland_directurl);
 const ireland_gaws = new WebSocket(ireland_gaurl);
 const ireland_cdnws = new WebSocket(ireland_cdnurl);
 
-var tokyo_directurl = 'ws://54.216.197.249'
-var tokyo_gaurl = 'ws://a07bbeb186c5678d7.awsglobalaccelerator.com'
-var tokyo_cdnurl = 'ws://d2vn4msflecgbi.cloudfront.net'
+var tokyo_directurl = 'ws://'
+var tokyo_gaurl = 'ws://'
+var tokyo_cdnurl = 'ws://'
 const tokyo_directws = new WebSocket(tokyo_directurl);
 const tokyo_gaws = new WebSocket(tokyo_gaurl);
 const tokyo_cdnws = new WebSocket(tokyo_cdnurl);
 
-var singapore_directurl = 'ws://52.221.184.239'
-var singapore_gaurl = 'ws://a07bbeb186c5678d7.awsglobalaccelerator.com'
-var singapore_cdnurl = 'ws://d2vn4msflecgbi.cloudfront.net'
+var singapore_directurl = 'ws://'
+var singapore_gaurl = 'ws://'
+var singapore_cdnurl = 'ws://'
 const singapore_directws = new WebSocket(singapore_directurl);
 const singapore_gaws = new WebSocket(singapore_gaurl);
 const singapore_cdnws = new WebSocket(singapore_cdnurl);
 
-var virginia_directurl = 'ws://54.216.197.249'
-var virginia_gaurl = 'ws://a07bbeb186c5678d7.awsglobalaccelerator.com'
-var virginia_cdnurl = 'ws://d2vn4msflecgbi.cloudfront.net'
+var virginia_directurl = 'ws://'
+var virginia_gaurl = 'ws://'
+var virginia_cdnurl = 'ws://'
 const virginia_directws = new WebSocket(virginia_directurl);
 const virginia_gaws = new WebSocket(virginia_gaurl);
 const virginia_cdnws = new WebSocket(virginia_cdnurl);
 
-var oregon_directurl = 'ws://54.216.197.249'
-var oregon_gaurl = 'ws://a07bbeb186c5678d7.awsglobalaccelerator.com'
-var oregon_cdnurl = 'ws://d2vn4msflecgbi.cloudfront.net'
+var oregon_directurl = 'ws://'
+var oregon_gaurl = 'ws://'
+var oregon_cdnurl = 'ws://'
 const oregon_directws = new WebSocket(oregon_directurl);
 const oregon_gaws = new WebSocket(oregon_gaurl);
 const oregon_cdnws = new WebSocket(oregon_cdnurl);
 
-var hongkong_directurl = 'ws://54.216.197.249'
-var hongkong_gaurl = 'ws://a07bbeb186c5678d7.awsglobalaccelerator.com'
-var hongkong_cdnurl = 'ws://d2vn4msflecgbi.cloudfront.net'
+var hongkong_directurl = 'ws://'
+var hongkong_gaurl = 'ws://'
+var hongkong_cdnurl = 'ws://'
 const hongkong_directws = new WebSocket(hongkong_directurl);
 const hongkong_gaws = new WebSocket(hongkong_gaurl);
 const hongkong_cdnws = new WebSocket(hongkong_cdnurl);
 
-var bahrain_directurl = 'ws://54.216.197.249'
-var bahrain_gaurl = 'ws://a07bbeb186c5678d7.awsglobalaccelerator.com'
-var bahrain_cdnurl = 'ws://d2vn4msflecgbi.cloudfront.net'
+var bahrain_directurl = 'ws://'
+var bahrain_gaurl = 'ws://'
+var bahrain_cdnurl = 'ws://'
 const bahrain_directws = new WebSocket(bahrain_directurl);
 const bahrain_gaws = new WebSocket(bahrain_gaurl);
 const bahrain_cdnws = new WebSocket(bahrain_cdnurl);

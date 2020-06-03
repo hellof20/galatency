@@ -225,12 +225,12 @@ ireland_cdnws.onmessage = function(event) {
 
 function testing() {
     // console.log("testing region is " + region)
-    frankfurt_gastart = new Date().getTime();
-    frankfurt_gaws.send('test');
-    frankfurt_directstart = new Date().getTime();
-    frankfurt_directws.send('test');
-    frankfurt_cdnstart = new Date().getTime();
-    frankfurt_cdnws.send('test');
+    // frankfurt_gastart = new Date().getTime();
+    // frankfurt_gaws.send('test');
+    // frankfurt_directstart = new Date().getTime();
+    // frankfurt_directws.send('test');
+    // frankfurt_cdnstart = new Date().getTime();
+    // frankfurt_cdnws.send('test');
 
     ireland_gastart = new Date().getTime();
     ireland_gaws.send('test');
@@ -239,47 +239,47 @@ function testing() {
     ireland_cdnstart = new Date().getTime();
     ireland_cdnws.send('test');
 
-    tokyo_gastart = new Date().getTime();
-    tokyo_gaws.send('test');
-    tokyo_directstart = new Date().getTime();
-    tokyo_directws.send('test');
-    tokyo_cdnstart = new Date().getTime();
-    tokyo_cdnws.send('test');
+    // tokyo_gastart = new Date().getTime();
+    // tokyo_gaws.send('test');
+    // tokyo_directstart = new Date().getTime();
+    // tokyo_directws.send('test');
+    // tokyo_cdnstart = new Date().getTime();
+    // tokyo_cdnws.send('test');
 
-    singapore_gastart = new Date().getTime();
-    singapore_gaws.send('test');
-    singapore_directstart = new Date().getTime();
-    singapore_directws.send('test');
-    singapore_cdnstart = new Date().getTime();
-    singapore_cdnws.send('test');
+    // singapore_gastart = new Date().getTime();
+    // singapore_gaws.send('test');
+    // singapore_directstart = new Date().getTime();
+    // singapore_directws.send('test');
+    // singapore_cdnstart = new Date().getTime();
+    // singapore_cdnws.send('test');
 
-    virginia_gastart = new Date().getTime();
-    virginia_gaws.send('test');
-    virginia_directstart = new Date().getTime();
-    virginia_directws.send('test');
-    virginia_cdnstart = new Date().getTime();
-    virginia_cdnws.send('test');
+    // virginia_gastart = new Date().getTime();
+    // virginia_gaws.send('test');
+    // virginia_directstart = new Date().getTime();
+    // virginia_directws.send('test');
+    // virginia_cdnstart = new Date().getTime();
+    // virginia_cdnws.send('test');
 
-    oregon_gastart = new Date().getTime();
-    oregon_gaws.send('test');
-    oregon_directstart = new Date().getTime();
-    oregon_directws.send('test');
-    oregon_cdnstart = new Date().getTime();
-    oregon_cdnws.send('test');
+    // oregon_gastart = new Date().getTime();
+    // oregon_gaws.send('test');
+    // oregon_directstart = new Date().getTime();
+    // oregon_directws.send('test');
+    // oregon_cdnstart = new Date().getTime();
+    // oregon_cdnws.send('test');
 
-    hongkong_gastart = new Date().getTime();
-    hongkong_gaws.send('test');
-    hongkong_directstart = new Date().getTime();
-    hongkong_directws.send('test');
-    hongkong_cdnstart = new Date().getTime();
-    hongkong_cdnws.send('test');
+    // hongkong_gastart = new Date().getTime();
+    // hongkong_gaws.send('test');
+    // hongkong_directstart = new Date().getTime();
+    // hongkong_directws.send('test');
+    // hongkong_cdnstart = new Date().getTime();
+    // hongkong_cdnws.send('test');
 
-    bahrain_gastart = new Date().getTime();
-    bahrain_gaws.send('test');
-    bahrain_directstart = new Date().getTime();
-    bahrain_directws.send('test');
-    bahrain_cdnstart = new Date().getTime();
-    bahrain_cdnws.send('test');
+    // bahrain_gastart = new Date().getTime();
+    // bahrain_gaws.send('test');
+    // bahrain_directstart = new Date().getTime();
+    // bahrain_directws.send('test');
+    // bahrain_cdnstart = new Date().getTime();
+    // bahrain_cdnws.send('test');
 
 }
 var intervalTesting;

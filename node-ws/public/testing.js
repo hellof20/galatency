@@ -19,12 +19,12 @@ const ireland_directws = new WebSocket(ireland_directurl);
 const ireland_gaws = new WebSocket(ireland_gaurl);
 const ireland_cdnws = new WebSocket(ireland_cdnurl);
 
-// var tokyo_directurl = 'ws://54.178.209.183'
-// var tokyo_gaurl = 'ws://'
-// var tokyo_cdnurl = 'ws://'
-// const tokyo_directws = new WebSocket(tokyo_directurl);
-// const tokyo_gaws = new WebSocket(tokyo_gaurl);
-// const tokyo_cdnws = new WebSocket(tokyo_cdnurl);
+var tokyo_directurl = 'ws://54.238.250.242'
+var tokyo_gaurl = 'ws://ac0e1efeeda8f9ef5.awsglobalaccelerator.com'
+var tokyo_cdnurl = 'ws://dcjikgbu02743.cloudfront.net'
+const tokyo_directws = new WebSocket(tokyo_directurl);
+const tokyo_gaws = new WebSocket(tokyo_gaurl);
+const tokyo_cdnws = new WebSocket(tokyo_cdnurl);
 
 var singapore_directurl = 'ws://18.141.212.180'
 var singapore_gaurl = 'ws://ac99e7f2fe7a72b29.awsglobalaccelerator.com'
@@ -108,24 +108,24 @@ ireland_cdnws.onmessage = function(event) {
     //senddata('cdn',ireland_cdnlatency)
 };
 
-// tokyo_directws.onmessage = function(event) {
-//     tokyo_directlatency = new Date().getTime() - tokyo_directstart;
-//     console.log("tokyo_directlatency = " + tokyo_directlatency)
-//     document.getElementById('tokyo_directlatency').innerHTML = "Latency of <b> Public Internet</b>: " + tokyo_directlatency + "ms"
-//     //senddata('direct',tokyo_directlatency)
-// };
-// tokyo_gaws.onmessage = function(event) {
-//     tokyo_galatency = new Date().getTime() - tokyo_gastart;
-//     console.log("tokyo_galatency = " + tokyo_galatency)
-//     document.getElementById('tokyo_galatency').innerHTML = "Latency of Using <b> Global Accelerator</b>: " + tokyo_galatency + "ms"
-//     //senddata('ga',tokyo_galatency)
-// };
-// tokyo_cdnws.onmessage = function(event) {
-//     tokyo_cdnlatency = new Date().getTime() - tokyo_cdnstart;
-//     console.log("tokyo_cdnlatency = " + tokyo_cdnlatency)
-//     document.getElementById('tokyo_cdnlatency').innerHTML = "Latency of Using <b> Cloudfront</b>: " + tokyo_cdnlatency + "ms"
-//     //senddata('cdn',tokyo_cdnlatency)
-// };
+tokyo_directws.onmessage = function(event) {
+    tokyo_directlatency = new Date().getTime() - tokyo_directstart;
+    console.log("tokyo_directlatency = " + tokyo_directlatency)
+    document.getElementById('tokyo_directlatency').innerHTML = "Latency of <b> Public Internet</b>: " + tokyo_directlatency + "ms"
+    //senddata('direct',tokyo_directlatency)
+};
+tokyo_gaws.onmessage = function(event) {
+    tokyo_galatency = new Date().getTime() - tokyo_gastart;
+    console.log("tokyo_galatency = " + tokyo_galatency)
+    document.getElementById('tokyo_galatency').innerHTML = "Latency of Using <b> Global Accelerator</b>: " + tokyo_galatency + "ms"
+    //senddata('ga',tokyo_galatency)
+};
+tokyo_cdnws.onmessage = function(event) {
+    tokyo_cdnlatency = new Date().getTime() - tokyo_cdnstart;
+    console.log("tokyo_cdnlatency = " + tokyo_cdnlatency)
+    document.getElementById('tokyo_cdnlatency').innerHTML = "Latency of Using <b> Cloudfront</b>: " + tokyo_cdnlatency + "ms"
+    //senddata('cdn',tokyo_cdnlatency)
+};
 
 singapore_directws.onmessage = function(event) {
     singapore_directlatency = new Date().getTime() - singapore_directstart;
@@ -239,12 +239,12 @@ function testing() {
     ireland_cdnstart = new Date().getTime();
     ireland_cdnws.send('test');
 
-    // tokyo_gastart = new Date().getTime();
-    // tokyo_gaws.send('test');
-    // tokyo_directstart = new Date().getTime();
-    // tokyo_directws.send('test');
-    // tokyo_cdnstart = new Date().getTime();
-    // tokyo_cdnws.send('test');
+    tokyo_gastart = new Date().getTime();
+    tokyo_gaws.send('test');
+    tokyo_directstart = new Date().getTime();
+    tokyo_directws.send('test');
+    tokyo_cdnstart = new Date().getTime();
+    tokyo_cdnws.send('test');
 
     singapore_gastart = new Date().getTime();
     singapore_gaws.send('test');

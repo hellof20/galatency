@@ -26,12 +26,12 @@ const ireland_cdnws = new WebSocket(ireland_cdnurl);
 // const tokyo_gaws = new WebSocket(tokyo_gaurl);
 // const tokyo_cdnws = new WebSocket(tokyo_cdnurl);
 
-// var singapore_directurl = 'ws://'
-// var singapore_gaurl = 'ws://'
-// var singapore_cdnurl = 'ws://'
-// const singapore_directws = new WebSocket(singapore_directurl);
-// const singapore_gaws = new WebSocket(singapore_gaurl);
-// const singapore_cdnws = new WebSocket(singapore_cdnurl);
+var singapore_directurl = 'ws://18.141.212.180'
+var singapore_gaurl = 'ws://ac99e7f2fe7a72b29.awsglobalaccelerator.com'
+var singapore_cdnurl = 'ws://d2tcdk8f370sxw.cloudfront.net'
+const singapore_directws = new WebSocket(singapore_directurl);
+const singapore_gaws = new WebSocket(singapore_gaurl);
+const singapore_cdnws = new WebSocket(singapore_cdnurl);
 
 // var virginia_directurl = 'ws://'
 // var virginia_gaurl = 'ws://'
@@ -127,24 +127,24 @@ ireland_cdnws.onmessage = function(event) {
 //     //senddata('cdn',tokyo_cdnlatency)
 // };
 
-// singapore_directws.onmessage = function(event) {
-//     singapore_directlatency = new Date().getTime() - singapore_directstart;
-//     console.log("singapore_directlatency = " + singapore_directlatency)
-//     document.getElementById('singapore_directlatency').innerHTML = "Latency of <b> Public Internet</b>: " + singapore_directlatency + "ms"
-//     //senddata('direct',singapore_directlatency)
-// };
-// singapore_gaws.onmessage = function(event) {
-//     singapore_galatency = new Date().getTime() - singapore_gastart;
-//     console.log("singapore_galatency = " + singapore_galatency)
-//     document.getElementById('singapore_galatency').innerHTML = "Latency of Using <b> Global Accelerator</b>: " + singapore_galatency + "ms"
-//     //senddata('ga',singapore_galatency)
-// };
-// singapore_cdnws.onmessage = function(event) {
-//     singapore_cdnlatency = new Date().getTime() - singapore_cdnstart;
-//     console.log("singapore_cdnlatency = " + singapore_cdnlatency)
-//     document.getElementById('singapore_cdnlatency').innerHTML = "Latency of Using <b> Cloudfront</b>: " + singapore_cdnlatency + "ms"
-//     //senddata('cdn',singapore_cdnlatency)
-// };
+singapore_directws.onmessage = function(event) {
+    singapore_directlatency = new Date().getTime() - singapore_directstart;
+    console.log("singapore_directlatency = " + singapore_directlatency)
+    document.getElementById('singapore_directlatency').innerHTML = "Latency of <b> Public Internet</b>: " + singapore_directlatency + "ms"
+    //senddata('direct',singapore_directlatency)
+};
+singapore_gaws.onmessage = function(event) {
+    singapore_galatency = new Date().getTime() - singapore_gastart;
+    console.log("singapore_galatency = " + singapore_galatency)
+    document.getElementById('singapore_galatency').innerHTML = "Latency of Using <b> Global Accelerator</b>: " + singapore_galatency + "ms"
+    //senddata('ga',singapore_galatency)
+};
+singapore_cdnws.onmessage = function(event) {
+    singapore_cdnlatency = new Date().getTime() - singapore_cdnstart;
+    console.log("singapore_cdnlatency = " + singapore_cdnlatency)
+    document.getElementById('singapore_cdnlatency').innerHTML = "Latency of Using <b> Cloudfront</b>: " + singapore_cdnlatency + "ms"
+    //senddata('cdn',singapore_cdnlatency)
+};
 
 // virginia_directws.onmessage = function(event) {
 //     virginia_directlatency = new Date().getTime() - virginia_directstart;
@@ -246,12 +246,12 @@ function testing() {
     // tokyo_cdnstart = new Date().getTime();
     // tokyo_cdnws.send('test');
 
-    // singapore_gastart = new Date().getTime();
-    // singapore_gaws.send('test');
-    // singapore_directstart = new Date().getTime();
-    // singapore_directws.send('test');
-    // singapore_cdnstart = new Date().getTime();
-    // singapore_cdnws.send('test');
+    singapore_gastart = new Date().getTime();
+    singapore_gaws.send('test');
+    singapore_directstart = new Date().getTime();
+    singapore_directws.send('test');
+    singapore_cdnstart = new Date().getTime();
+    singapore_cdnws.send('test');
 
     // virginia_gastart = new Date().getTime();
     // virginia_gaws.send('test');

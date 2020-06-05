@@ -33,12 +33,12 @@ const singapore_directws = new WebSocket(singapore_directurl);
 const singapore_gaws = new WebSocket(singapore_gaurl);
 const singapore_cdnws = new WebSocket(singapore_cdnurl);
 
-// var virginia_directurl = 'ws://'
-// var virginia_gaurl = 'ws://'
-// var virginia_cdnurl = 'ws://'
-// const virginia_directws = new WebSocket(virginia_directurl);
-// const virginia_gaws = new WebSocket(virginia_gaurl);
-// const virginia_cdnws = new WebSocket(virginia_cdnurl);
+var virginia_directurl = 'ws://23.21.96.0'
+var virginia_gaurl = 'ws://afa48d55657e2fad1.awsglobalaccelerator.com'
+var virginia_cdnurl = 'ws://d2orhkldqzu7st.cloudfront.net'
+const virginia_directws = new WebSocket(virginia_directurl);
+const virginia_gaws = new WebSocket(virginia_gaurl);
+const virginia_cdnws = new WebSocket(virginia_cdnurl);
 
 // var oregon_directurl = 'ws://'
 // var oregon_gaurl = 'ws://'
@@ -146,24 +146,24 @@ singapore_cdnws.onmessage = function(event) {
     //senddata('cdn',singapore_cdnlatency)
 };
 
-// virginia_directws.onmessage = function(event) {
-//     virginia_directlatency = new Date().getTime() - virginia_directstart;
-//     console.log("virginia_directlatency = " + virginia_directlatency)
-//     document.getElementById('virginia_directlatency').innerHTML = "Latency of <b> Public Internet</b>: " + virginia_directlatency + "ms"
-//     //senddata('direct',virginia_directlatency)
-// };
-// virginia_gaws.onmessage = function(event) {
-//     virginia_galatency = new Date().getTime() - virginia_gastart;
-//     console.log("virginia_galatency = " + virginia_galatency)
-//     document.getElementById('virginia_galatency').innerHTML = "Latency of Using <b> Global Accelerator</b>: " + virginia_galatency + "ms"
-//     //senddata('ga',virginia_galatency)
-// };
-// virginia_cdnws.onmessage = function(event) {
-//     virginia_cdnlatency = new Date().getTime() - virginia_cdnstart;
-//     console.log("virginia_cdnlatency = " + virginia_cdnlatency)
-//     document.getElementById('virginia_cdnlatency').innerHTML = "Latency of Using <b> Cloudfront</b>: " + virginia_cdnlatency + "ms"
-//     //senddata('cdn',virginia_cdnlatency)
-// };
+virginia_directws.onmessage = function(event) {
+    virginia_directlatency = new Date().getTime() - virginia_directstart;
+    console.log("virginia_directlatency = " + virginia_directlatency)
+    document.getElementById('virginia_directlatency').innerHTML = "Latency of <b> Public Internet</b>: " + virginia_directlatency + "ms"
+    //senddata('direct',virginia_directlatency)
+};
+virginia_gaws.onmessage = function(event) {
+    virginia_galatency = new Date().getTime() - virginia_gastart;
+    console.log("virginia_galatency = " + virginia_galatency)
+    document.getElementById('virginia_galatency').innerHTML = "Latency of Using <b> Global Accelerator</b>: " + virginia_galatency + "ms"
+    //senddata('ga',virginia_galatency)
+};
+virginia_cdnws.onmessage = function(event) {
+    virginia_cdnlatency = new Date().getTime() - virginia_cdnstart;
+    console.log("virginia_cdnlatency = " + virginia_cdnlatency)
+    document.getElementById('virginia_cdnlatency').innerHTML = "Latency of Using <b> Cloudfront</b>: " + virginia_cdnlatency + "ms"
+    //senddata('cdn',virginia_cdnlatency)
+};
 
 // oregon_directws.onmessage = function(event) {
 //     oregon_directlatency = new Date().getTime() - oregon_directstart;
@@ -253,12 +253,12 @@ function testing() {
     singapore_cdnstart = new Date().getTime();
     singapore_cdnws.send('test');
 
-    // virginia_gastart = new Date().getTime();
-    // virginia_gaws.send('test');
-    // virginia_directstart = new Date().getTime();
-    // virginia_directws.send('test');
-    // virginia_cdnstart = new Date().getTime();
-    // virginia_cdnws.send('test');
+    virginia_gastart = new Date().getTime();
+    virginia_gaws.send('test');
+    virginia_directstart = new Date().getTime();
+    virginia_directws.send('test');
+    virginia_cdnstart = new Date().getTime();
+    virginia_cdnws.send('test');
 
     // oregon_gastart = new Date().getTime();
     // oregon_gaws.send('test');

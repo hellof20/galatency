@@ -5,12 +5,12 @@ function senddata(latencyType,latency){
     var latencydata = {"latencyType": latencyType,"latency": latency};
     request.send(JSON.stringify(latencydata));
 }
-var frankfurt_directurl = 'ws://3.120.185.144'
-var frankfurt_gaurl = 'ws://af2397328671acf95.awsglobalaccelerator.com'
-var frankfurt_cdnurl = 'ws://d2nybbyzo37vwl.cloudfront.net'
-const frankfurt_directws = new WebSocket(frankfurt_directurl);
-const frankfurt_gaws = new WebSocket(frankfurt_gaurl);
-const frankfurt_cdnws = new WebSocket(frankfurt_cdnurl);
+// var frankfurt_directurl = 'ws://3.120.185.144'
+// var frankfurt_gaurl = 'ws://af2397328671acf95.awsglobalaccelerator.com'
+// var frankfurt_cdnurl = 'ws://d2nybbyzo37vwl.cloudfront.net'
+// const frankfurt_directws = new WebSocket(frankfurt_directurl);
+// const frankfurt_gaws = new WebSocket(frankfurt_gaurl);
+// const frankfurt_cdnws = new WebSocket(frankfurt_cdnurl);
 
 var ireland_directurl = 'ws://54.216.197.249'
 var ireland_gaurl = 'ws://a07bbeb186c5678d7.awsglobalaccelerator.com'
@@ -70,24 +70,24 @@ const singapore_cdnws = new WebSocket(singapore_cdnurl);
 //   directws.send('test');`
 // }
 
-frankfurt_directws.onmessage = function(event) {
-    frankfurt_directlatency = new Date().getTime() - frankfurt_directstart;
-    console.log("frankfurt_directlatency = " + frankfurt_directlatency)
-    document.getElementById('frankfurt_directlatency').innerHTML = "Latency of <b> Public Internet</b>: " + frankfurt_directlatency + "ms"
-    //senddata('direct',frankfurt_directlatency)
-};
-frankfurt_gaws.onmessage = function(event) {
-    frankfurt_galatency = new Date().getTime() - frankfurt_gastart;
-    console.log("frankfurt_galatency = " + frankfurt_galatency)
-    document.getElementById('frankfurt_galatency').innerHTML = "Latency of Using <b> Global Accelerator</b>: " + frankfurt_galatency + "ms"
-    //senddata('ga',frankfurt_galatency)
-};
-frankfurt_cdnws.onmessage = function(event) {
-    frankfurt_cdnlatency = new Date().getTime() - frankfurt_cdnstart;
-    console.log("frankfurt_cdnlatency = " + frankfurt_cdnlatency)
-    document.getElementById('frankfurt_cdnlatency').innerHTML = "Latency of Using <b> Cloudfront</b>: " + frankfurt_cdnlatency + "ms"
-    //senddata('cdn',frankfurt_cdnlatency)
-};
+//frankfurt_directws.onmessage = function(event) {
+//    frankfurt_directlatency = new Date().getTime() - frankfurt_directstart;
+//    console.log("frankfurt_directlatency = " + frankfurt_directlatency)
+//    document.getElementById('frankfurt_directlatency').innerHTML = "Latency of <b> Public Internet</b>: " + frankfurt_directlatency + "ms"
+//    //senddata('direct',frankfurt_directlatency)
+//};
+//frankfurt_gaws.onmessage = function(event) {
+//    frankfurt_galatency = new Date().getTime() - frankfurt_gastart;
+//    console.log("frankfurt_galatency = " + frankfurt_galatency)
+//    document.getElementById('frankfurt_galatency').innerHTML = "Latency of Using <b> Global Accelerator</b>: " + frankfurt_galatency + "ms"
+//    //senddata('ga',frankfurt_galatency)
+//};
+//frankfurt_cdnws.onmessage = function(event) {
+//    frankfurt_cdnlatency = new Date().getTime() - frankfurt_cdnstart;
+//    console.log("frankfurt_cdnlatency = " + frankfurt_cdnlatency)
+//    document.getElementById('frankfurt_cdnlatency').innerHTML = "Latency of Using <b> Cloudfront</b>: " + frankfurt_cdnlatency + "ms"
+//    //senddata('cdn',frankfurt_cdnlatency)
+//};
 
 ireland_directws.onmessage = function(event) {
     ireland_directlatency = new Date().getTime() - ireland_directstart;
@@ -225,12 +225,12 @@ singapore_cdnws.onmessage = function(event) {
 
 function testing() {
     // console.log("testing region is " + region)
-    frankfurt_gastart = new Date().getTime();
-    frankfurt_gaws.send('test');
-    frankfurt_directstart = new Date().getTime();
-    frankfurt_directws.send('test');
-    frankfurt_cdnstart = new Date().getTime();
-    frankfurt_cdnws.send('test');
+    //frankfurt_gastart = new Date().getTime();
+    //frankfurt_gaws.send('test');
+    //frankfurt_directstart = new Date().getTime();
+    //frankfurt_directws.send('test');
+    //frankfurt_cdnstart = new Date().getTime();
+    //frankfurt_cdnws.send('test');
 
     ireland_gastart = new Date().getTime();
     ireland_gaws.send('test');

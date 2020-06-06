@@ -33,9 +33,9 @@ const singapore_directws = new WebSocket(singapore_directurl);
 const singapore_gaws = new WebSocket(singapore_gaurl);
 const singapore_cdnws = new WebSocket(singapore_cdnurl);
 
-var virginia_directurl = 'ws://23.21.96.0'
-var virginia_gaurl = 'ws://afa48d55657e2fad1.awsglobalaccelerator.com'
-var virginia_cdnurl = 'ws://d2orhkldqzu7st.cloudfront.net'
+var virginia_directurl = 'ws://54.163.42.170'
+var virginia_gaurl = 'ws://adc927d6165cdb90f.awsglobalaccelerator.com'
+var virginia_cdnurl = 'ws://d38me0eucgz1iq.cloudfront.net'
 const virginia_directws = new WebSocket(virginia_directurl);
 const virginia_gaws = new WebSocket(virginia_gaurl);
 const virginia_cdnws = new WebSocket(virginia_cdnurl);

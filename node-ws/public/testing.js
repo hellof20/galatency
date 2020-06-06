@@ -47,12 +47,12 @@ const oregon_directws = new WebSocket(oregon_directurl);
 const oregon_gaws = new WebSocket(oregon_gaurl);
 const oregon_cdnws = new WebSocket(oregon_cdnurl);
 
-// var hongkong_directurl = 'ws://'
-// var hongkong_gaurl = 'ws://'
-// var hongkong_cdnurl = 'ws://'
-// const hongkong_directws = new WebSocket(hongkong_directurl);
-// const hongkong_gaws = new WebSocket(hongkong_gaurl);
-// const hongkong_cdnws = new WebSocket(hongkong_cdnurl);
+var hongkong_directurl = 'ws://18.166.56.164'
+var hongkong_gaurl = 'ws://ad9652ca2cc3c1e36.awsglobalaccelerator.com'
+var hongkong_cdnurl = 'ws://d1o04f6y9vugw.cloudfront.net'
+const hongkong_directws = new WebSocket(hongkong_directurl);
+const hongkong_gaws = new WebSocket(hongkong_gaurl);
+const hongkong_cdnws = new WebSocket(hongkong_cdnurl);
 
 // var bahrain_directurl = 'ws://'
 // var bahrain_gaurl = 'ws://'
@@ -184,24 +184,24 @@ oregon_cdnws.onmessage = function(event) {
     //senddata('cdn',oregon_cdnlatency)
 };
 
-// hongkong_directws.onmessage = function(event) {
-//     hongkong_directlatency = new Date().getTime() - hongkong_directstart;
-//     console.log("hongkong_directlatency = " + hongkong_directlatency)
-//     document.getElementById('hongkong_directlatency').innerHTML = "Latency of <b> Public Internet</b>: " + hongkong_directlatency + "ms"
-//     //senddata('direct',hongkong_directlatency)
-// };
-// hongkong_gaws.onmessage = function(event) {
-//     hongkong_galatency = new Date().getTime() - hongkong_gastart;
-//     console.log("hongkong_galatency = " + hongkong_galatency)
-//     document.getElementById('hongkong_galatency').innerHTML = "Latency of Using <b> Global Accelerator</b>: " + hongkong_galatency + "ms"
-//     //senddata('ga',hongkong_galatency)
-// };
-// hongkong_cdnws.onmessage = function(event) {
-//     hongkong_cdnlatency = new Date().getTime() - hongkong_cdnstart;
-//     console.log("hongkong_cdnlatency = " + hongkong_cdnlatency)
-//     document.getElementById('hongkong_cdnlatency').innerHTML = "Latency of Using <b> Cloudfront</b>: " + hongkong_cdnlatency + "ms"
-//     //senddata('cdn',hongkong_cdnlatency)
-// };
+hongkong_directws.onmessage = function(event) {
+    hongkong_directlatency = new Date().getTime() - hongkong_directstart;
+    console.log("hongkong_directlatency = " + hongkong_directlatency)
+    document.getElementById('hongkong_directlatency').innerHTML = "Latency of <b> Public Internet</b>: " + hongkong_directlatency + "ms"
+    //senddata('direct',hongkong_directlatency)
+};
+hongkong_gaws.onmessage = function(event) {
+    hongkong_galatency = new Date().getTime() - hongkong_gastart;
+    console.log("hongkong_galatency = " + hongkong_galatency)
+    document.getElementById('hongkong_galatency').innerHTML = "Latency of Using <b> Global Accelerator</b>: " + hongkong_galatency + "ms"
+    //senddata('ga',hongkong_galatency)
+};
+hongkong_cdnws.onmessage = function(event) {
+    hongkong_cdnlatency = new Date().getTime() - hongkong_cdnstart;
+    console.log("hongkong_cdnlatency = " + hongkong_cdnlatency)
+    document.getElementById('hongkong_cdnlatency').innerHTML = "Latency of Using <b> Cloudfront</b>: " + hongkong_cdnlatency + "ms"
+    //senddata('cdn',hongkong_cdnlatency)
+};
 
 // bahrain_directws.onmessage = function(event) {
 //     bahrain_directlatency = new Date().getTime() - bahrain_directstart;
@@ -267,12 +267,12 @@ function testing() {
     oregon_cdnstart = new Date().getTime();
     oregon_cdnws.send('test');
 
-    // hongkong_gastart = new Date().getTime();
-    // hongkong_gaws.send('test');
-    // hongkong_directstart = new Date().getTime();
-    // hongkong_directws.send('test');
-    // hongkong_cdnstart = new Date().getTime();
-    // hongkong_cdnws.send('test');
+    hongkong_gastart = new Date().getTime();
+    hongkong_gaws.send('test');
+    hongkong_directstart = new Date().getTime();
+    hongkong_directws.send('test');
+    hongkong_cdnstart = new Date().getTime();
+    hongkong_cdnws.send('test');
 
     // bahrain_gastart = new Date().getTime();
     // bahrain_gaws.send('test');

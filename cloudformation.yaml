@@ -58,11 +58,7 @@ Parameters:
       ImageId: !Ref ImageID  
       InstanceType: "t3.medium"
       KeyName: 
-        Ref: KeyPair   
-      BlockDeviceMappings:
-        - DeviceName: /dev/sda1
-          Ebs:
-            VolumeSize: 10  
+        Ref: KeyPair
       SecurityGroupIds:
         - !GetAtt mySecurityGroup
       SubnetId: !Ref mySubnet

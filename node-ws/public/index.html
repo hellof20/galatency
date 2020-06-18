@@ -3,10 +3,10 @@
   <head>
       <style>
           .button {
-            background-color: #4CAF50;
+            background-color: #0000FF;
             border: none;
             color: white;
-            padding: 12px 15px;
+            padding: 10px 10px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
@@ -16,14 +16,23 @@
           }
           </style>
           <style>
-            div{ float: left; margin: 20px}
+            div{ float: left; margin: 20px；}
+            /* body{
+              width: 100%;
+              text-align: center;
+            } */
           </style>
   </head>
-  <!-- <head><script src="jquery.min.js"></script></head> -->
   <body>
     <script src="testing.js"></script>
+    <h2>Your Current Info</h2>
+    <p id='myip'></p>
+    <p id='mycity'></p>
+    <p id='myorg'></p>
+    <HR align=left width=400 color=#987cb9 SIZE=1>
+    <h2>Networking Latency Testing</h2>
     <form>
-      Select AWS Region for Testing:
+      Select AWS Region:
       <select id="region" onchange="initconnect(this)">
         <option value="Ireland">Ireland</option>
         <option value="Singapore">Singapore</option>
@@ -42,65 +51,8 @@
       <p id='cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>
     </div>
     
-
-    <!-- <div style="display:none;">
-      <h2>Frankfurt Region</h2>
-      <p id='frankfurt_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
-      <p id='frankfurt_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
-      <p id='frankfurt_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>
-    </div>
-
-    <div style="display:none;">
-      <h2>Ireland Region</h2>
-      <p id='ireland_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
-      <p id='ireland_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
-      <p id='ireland_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>
-    </div>
-
-    <div style="display:none;">
-      <h2>Tokyo Region</h2>
-      <p id='tokyo_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
-      <p id='tokyo_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
-      <p id='tokyo_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>  
-    </div>
-
-    <div style="display:none;">
-      <h2>Singapore Region</h2>
-      <p id='singapore_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
-      <p id='singapore_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
-      <p id='singapore_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>  
-    </div>
-    
-    <div style="display:none;">
-      <h2>Virginia Region</h2>
-      <p id='virginia_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
-      <p id='virginia_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
-      <p id='virginia_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>  
-    </div>
-
-    <div style="display:none;">
-      <h2>Oregon Region</h2>
-      <p id='oregon_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
-      <p id='oregon_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
-      <p id='oregon_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>  
-    </div>
-    
-    <div style="display:none;">
-      <h2>HongKong Region</h2>
-      <p id='hongkong_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
-      <p id='hongkong_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
-      <p id='hongkong_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>  
-    </div>
-    
-    <div style="display:none;">
-      <h2>Bahrain Region</h2>
-      <p id='bahrain_directlatency'>Latency of <b> Public Internet</b>: 0ms</p>
-      <p id='bahrain_galatency'>Latency of Using <b> Global Accelerator</b>: 0ms</p>
-      <p id='bahrain_cdnlatency'>Latency of Using <b> Cloudfront</b>: 0ms</p>  
-    </div> -->
-    
-    <button class="button" onclick="startTesting();">START TESTING</button>
-    <button class="button" onclick="stopTesting();">STOP TESTING</button> 
+    <button class="button" onclick="startTesting();">START</button>
+    <button class="button" onclick="stopTesting();">STOP</button> 
 
   </body>
 </html>

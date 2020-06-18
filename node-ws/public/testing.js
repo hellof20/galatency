@@ -1,16 +1,9 @@
-// function senddata(latencyType,latency){
-//     var url = "http://:8081/data"
-//     var request = new XMLHttpRequest();
-//     request.open("POST", url);
-//     var latencydata = {"latencyType": latencyType,"latency": latency};
-//     request.send(JSON.stringify(latencydata));
-// }
-
 var directws,directstarttime;
 var gaws,gastarttime;
 var cdnws,cdnstarttime
 var directtest,gatest,cdntest;
 var selectedRegion
+
 var frankfurt_directurl = 'ws://35.158.115.62'
 var frankfurt_gaurl = 'ws://aa204fb2285eaba0f.awsglobalaccelerator.com'
 var frankfurt_cdnurl = 'ws://d12v8yek5riemm.cloudfront.net'
@@ -44,11 +37,21 @@ var hongkong_cdnurl = 'ws://d1o04f6y9vugw.cloudfront.net'
 // var bahrain_cdnurl = 'ws://'
 
 function getmyip(latencyType,latency){
-    var url = "http://www.cip.cc/"
-    var request = new XMLHttpRequest();
-    request.open("GET", url);
-    response = request.send(null);
-    console.log(response)
+    var url = "http://ipinfo.io/?token=cf55ec4dfcbb19"
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            myipinfo = JSON.parse(xhr.response)
+            var myip = myipinfo.ip;
+            var mycity = myipinfo.city;
+            var myorg = myipinfo.org
+            document.getElementById('myip').innerHTML = "Your Ip is : " + myip
+            document.getElementById('mycity').innerHTML = "Your City is : " + mycity
+            document.getElementById('myorg').innerHTML = "Your Org is : " + myorg
+        }
+      }
+    xhr.open("GET", url);
+    xhr.send('');
 }
 
 function RegionTest(directurl,gaurl,cdnurl) {
@@ -60,39 +63,36 @@ function RegionTest(directurl,gaurl,cdnurl) {
         directws = new WebSocket(directurl)
         directws.onmessage = function(){
             var directlatency = new Date().getTime() - directstarttime;
-            console.log("directlatency = " + directlatency)
             document.getElementById('directlatency').innerHTML = "Latency of <b>Public Internet</b>: " + directlatency + "ms"
         }
     }
     this.directsend = function(){
         directstarttime = new Date().getTime()
-        console.log(directws.readyState)
+        // console.log(directws.readyState)
         directws.send('direct')
     }
     this.ga = function (){
         gaws = new WebSocket(gaurl)
         gaws.onmessage = function(){
             var galatency = new Date().getTime() - gastarttime;
-            console.log("galatency = " + galatency)
             document.getElementById('galatency').innerHTML = "Latency of <b>Using Global Accelerator</b>: " + galatency + "ms"
         }
     }
     this.gasend = function(){
         gastarttime = new Date().getTime()
-        console.log(gaws.readyState)
+        // console.log(gaws.readyState)
         gaws.send('ga')
     }
     this.cdn = function (){
         cdnws = new WebSocket(cdnurl)
         cdnws.onmessage = function(){
             var cdnlatency = new Date().getTime() - cdnstarttime;
-            console.log("cdnlatency = " + cdnlatency)
             document.getElementById('cdnlatency').innerHTML = "Latency of <b>Using Cloudfront</b>: " + cdnlatency + "ms"
         }
     }
     this.cdnsend = function(){
         cdnstarttime = new Date().getTime()
-        console.log(cdnws.readyState)
+        // console.log(cdnws.readyState)
         cdnws.send('cdn')
     }
 }
@@ -104,6 +104,7 @@ window.onload = function(){
 }
 
 function initconnect(){
+    stopTesting()
     region = document.getElementById("region").value
     awsregion = region.toLowerCase()
     document.getElementById('directlatency').innerHTML = "Latency of <b> Public Internet</b>: 0ms"

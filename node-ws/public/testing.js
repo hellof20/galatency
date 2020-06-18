@@ -1,9 +1,10 @@
 var directws,directstarttime;
 var gaws,gastarttime;
 var cdnws,cdnstarttime
-var directtest,gatest,cdntest;
+var directtest,gatest,cdntest,latencytest;
 var selectedRegion;
 var currentregion;
+var table,row,direct_cell,ga_cell,cdn_cell;
 
 var frankfurt_directurl = 'ws://35.158.115.62'
 var frankfurt_gaurl = 'ws://aa204fb2285eaba0f.awsglobalaccelerator.com'
@@ -63,6 +64,7 @@ function RegionTest(directurl,gaurl,cdnurl) {
         directws = new WebSocket(directurl)
         directws.onmessage = function(){
             var directlatency = new Date().getTime() - directstarttime;
+            direct_cell.innerHTML = directlatency + 'ms';
             document.getElementById('directlatency').innerHTML = "Your browser --> <b>Public Internet </b> --> AWS " + currentregion +": " + directlatency + "ms"
         }
     }
@@ -78,6 +80,7 @@ function RegionTest(directurl,gaurl,cdnurl) {
         gaws = new WebSocket(gaurl)
         gaws.onmessage = function(){
             var galatency = new Date().getTime() - gastarttime;
+            ga_cell.innerHTML = galatency + 'ms';
             document.getElementById('galatency').innerHTML = "Your browser --> <b>Global Accelerator</b> --> AWS " + currentregion +": " + galatency + "ms"
         }
     }
@@ -93,6 +96,7 @@ function RegionTest(directurl,gaurl,cdnurl) {
         cdnws = new WebSocket(cdnurl)
         cdnws.onmessage = function(){
             var cdnlatency = new Date().getTime() - cdnstarttime;
+            cdn_cell.innerHTML = cdnlatency + 'ms';
             document.getElementById('cdnlatency').innerHTML = "Your browser --> <b>Cloudfront </b> --> AWS " + currentregion +": " + cdnlatency + "ms"
         }
     }
@@ -112,6 +116,7 @@ function RegionTest(directurl,gaurl,cdnurl) {
 }
 
 window.onload = function(){
+    table = document.getElementById('tbody1')
     getmyip()
     initconnect()
 }
@@ -121,6 +126,7 @@ function initconnect(){
     awsregion = currentregion.toLowerCase()
     clearws()
     clearwsInterval()
+    clearTable()
     selectedRegion = new RegionTest(eval(awsregion+'_directurl'),eval(awsregion+'_gaurl'),eval(awsregion+'_cdnurl'))
     selectedRegion.direct()
     selectedRegion.ga()
@@ -128,18 +134,18 @@ function initconnect(){
 }
 
 function startTesting(){
-    selectedRegion.directsend();
-    directtest = setInterval(function(){
+    // selectedRegion.directsend();
+    // selectedRegion.gasend();
+    // selectedRegion.cdnsend();
+    console.log(latencytest)
+    clearwsInterval()
+    latencytest = setInterval(function(){
+        row = table.insertRow(1);
+        direct_cell = row.insertCell(0);
+        ga_cell = row.insertCell(1);
+        cdn_cell = row.insertCell(2);
         selectedRegion.directsend(); 
-    }, 2000);
-    
-    selectedRegion.gasend();
-    gatest = setInterval(function(){ 
-        selectedRegion.gasend(); 
-    }, 2000);
-
-    selectedRegion.cdnsend();
-    cdntest = setInterval(function(){ 
+        selectedRegion.gasend();
         selectedRegion.cdnsend(); 
     }, 2000);
 }
@@ -148,10 +154,16 @@ function stopTesting(){
     clearwsInterval()
 }
 
+function clearTable(){
+    var tableRows = table.getElementsByTagName('tr');
+    var rowCount = tableRows.length;
+    for (var x=rowCount-1; x>0; x--) {
+        table.removeChild(tableRows[x]);
+    }
+}
+
 function clearwsInterval(){
-    clearInterval(directtest)
-    clearInterval(gatest)
-    clearInterval(cdntest)
+    clearInterval(latencytest)
     document.getElementById('directlatency').innerHTML = "Your browser --> <b>Public Internet </b> --> AWS " + currentregion
     document.getElementById('galatency').innerHTML = "Your browser --> <b> Global Accelerator </b>--> AWS " + currentregion
     document.getElementById('cdnlatency').innerHTML = "Your browser --> <b> Cloudfront </b>--> AWS " + currentregion

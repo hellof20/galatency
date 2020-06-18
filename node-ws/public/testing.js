@@ -3,6 +3,7 @@ var gaws,gastarttime;
 var cdnws,cdnstarttime
 var directtest,gatest,cdntest;
 var selectedRegion;
+var currentregion;
 
 var frankfurt_directurl = 'ws://35.158.115.62'
 var frankfurt_gaurl = 'ws://aa204fb2285eaba0f.awsglobalaccelerator.com'
@@ -62,7 +63,7 @@ function RegionTest(directurl,gaurl,cdnurl) {
         directws = new WebSocket(directurl)
         directws.onmessage = function(){
             var directlatency = new Date().getTime() - directstarttime;
-            document.getElementById('directlatency').innerHTML = "Latency of <b>Public Internet</b>: " + directlatency + "ms"
+            document.getElementById('directlatency').innerHTML = "Your browser --> <b>Public Internet </b> --> AWS " + currentregion +": " + directlatency + "ms"
         }
     }
     this.directsend = function(){
@@ -70,15 +71,14 @@ function RegionTest(directurl,gaurl,cdnurl) {
         if(directws.readyState == 1){
             directws.send('direct')
         } else {
-            document.getElementById('directlatency').innerHTML = "Latency of <b>Public Internet</b>: timeout"
+            document.getElementById('directlatency').innerHTML = "Your browser --> <b>Public Internet</b> --> AWS " + currentregion + ": timeout"
         }
-        
     }
     this.ga = function (){
         gaws = new WebSocket(gaurl)
         gaws.onmessage = function(){
             var galatency = new Date().getTime() - gastarttime;
-            document.getElementById('galatency').innerHTML = "Latency of <b>Using Global Accelerator</b>: " + galatency + "ms"
+            document.getElementById('galatency').innerHTML = "Your browser --> <b>Global Accelerator</b> --> AWS " + currentregion +": " + galatency + "ms"
         }
     }
     this.gasend = function(){
@@ -86,15 +86,14 @@ function RegionTest(directurl,gaurl,cdnurl) {
         if(gaws.readyState == 1) {
             gaws.send('ga')
         }else{
-            document.getElementById('directlatency').innerHTML = "Latency of <b>Public Internet</b>: timeout"
+            document.getElementById('galatency').innerHTML = "Your browser --> <b>Global Accelerator</b> --> AWS " + currentregion + ": timeout"
         }
-        
     }
     this.cdn = function (){
         cdnws = new WebSocket(cdnurl)
         cdnws.onmessage = function(){
             var cdnlatency = new Date().getTime() - cdnstarttime;
-            document.getElementById('cdnlatency').innerHTML = "Latency of <b>Using Cloudfront</b>: " + cdnlatency + "ms"
+            document.getElementById('cdnlatency').innerHTML = "Your browser --> <b>Cloudfront </b> --> AWS " + currentregion +": " + cdnlatency + "ms"
         }
     }
     this.cdnsend = function(){
@@ -102,7 +101,7 @@ function RegionTest(directurl,gaurl,cdnurl) {
         if(cdnws.readyState == 1){
             cdnws.send('cdn')
         }else{
-            document.getElementById('directlatency').innerHTML = "Latency of <b>Public Internet</b>: timeout"
+            document.getElementById('cdnlatency').innerHTML = "Your browser --> <b>Cloudfront </b> --> AWS " + currentregion + ": timeout"
         }
     }
     this.closews = function(){
@@ -112,20 +111,16 @@ function RegionTest(directurl,gaurl,cdnurl) {
     }
 }
 
-
 window.onload = function(){
     getmyip()
     initconnect()
 }
 
 function initconnect(){
+    currentregion = document.getElementById("region").value
+    awsregion = currentregion.toLowerCase()
     clearws()
     clearwsInterval()
-    region = document.getElementById("region").value
-    awsregion = region.toLowerCase()
-    document.getElementById('directlatency').innerHTML = "Latency of <b> Public Internet</b>: 0ms"
-    document.getElementById('galatency').innerHTML = "Latency of Using <b> Global Accelerator</b>: 0ms"
-    document.getElementById('cdnlatency').innerHTML = "Latency of Using <b> Cloudfront </b>: 0ms"
     selectedRegion = new RegionTest(eval(awsregion+'_directurl'),eval(awsregion+'_gaurl'),eval(awsregion+'_cdnurl'))
     selectedRegion.direct()
     selectedRegion.ga()
@@ -157,9 +152,9 @@ function clearwsInterval(){
     clearInterval(directtest)
     clearInterval(gatest)
     clearInterval(cdntest)
-    document.getElementById('directlatency').innerHTML = "Latency of <b> Public Internet</b>: 0ms"
-    document.getElementById('galatency').innerHTML = "Latency of Using <b> Global Accelerator</b>: 0ms"
-    document.getElementById('cdnlatency').innerHTML = "Latency of Using <b> Cloudfront </b>: 0ms"
+    document.getElementById('directlatency').innerHTML = "Your browser --> <b>Public Internet </b> --> AWS " + currentregion
+    document.getElementById('galatency').innerHTML = "Your browser --> <b> Global Accelerator </b>--> AWS " + currentregion
+    document.getElementById('cdnlatency').innerHTML = "Your browser --> <b> Cloudfront </b>--> AWS " + currentregion
 }
 
 function clearws(){

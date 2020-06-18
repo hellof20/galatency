@@ -2,7 +2,7 @@ var directws,directstarttime;
 var gaws,gastarttime;
 var cdnws,cdnstarttime
 var directtest,gatest,cdntest;
-var selectedRegion
+var selectedRegion;
 
 var frankfurt_directurl = 'ws://35.158.115.62'
 var frankfurt_gaurl = 'ws://aa204fb2285eaba0f.awsglobalaccelerator.com'
@@ -58,7 +58,6 @@ function RegionTest(directurl,gaurl,cdnurl) {
     this.directurl = directurl;
     this.gaurl = gaurl;
     this.cdnurl = cdnurl;
-    var directws,gaws,cdnws;
     this.direct = function (){
         directws = new WebSocket(directurl)
         directws.onmessage = function(){
@@ -68,8 +67,12 @@ function RegionTest(directurl,gaurl,cdnurl) {
     }
     this.directsend = function(){
         directstarttime = new Date().getTime()
-        // console.log(directws.readyState)
-        directws.send('direct')
+        if(directws.readyState == 1){
+            directws.send('direct')
+        } else {
+            document.getElementById('directlatency').innerHTML = "Latency of <b>Public Internet</b>: timeout"
+        }
+        
     }
     this.ga = function (){
         gaws = new WebSocket(gaurl)
@@ -80,8 +83,12 @@ function RegionTest(directurl,gaurl,cdnurl) {
     }
     this.gasend = function(){
         gastarttime = new Date().getTime()
-        // console.log(gaws.readyState)
-        gaws.send('ga')
+        if(gaws.readyState == 1) {
+            gaws.send('ga')
+        }else{
+            document.getElementById('directlatency').innerHTML = "Latency of <b>Public Internet</b>: timeout"
+        }
+        
     }
     this.cdn = function (){
         cdnws = new WebSocket(cdnurl)
@@ -92,8 +99,16 @@ function RegionTest(directurl,gaurl,cdnurl) {
     }
     this.cdnsend = function(){
         cdnstarttime = new Date().getTime()
-        // console.log(cdnws.readyState)
-        cdnws.send('cdn')
+        if(cdnws.readyState == 1){
+            cdnws.send('cdn')
+        }else{
+            document.getElementById('directlatency').innerHTML = "Latency of <b>Public Internet</b>: timeout"
+        }
+    }
+    this.closews = function(){
+        directws.close()
+        gaws.close()
+        cdnws.close()
     }
 }
 
@@ -104,7 +119,8 @@ window.onload = function(){
 }
 
 function initconnect(){
-    stopTesting()
+    clearws()
+    clearwsInterval()
     region = document.getElementById("region").value
     awsregion = region.toLowerCase()
     document.getElementById('directlatency').innerHTML = "Latency of <b> Public Internet</b>: 0ms"
@@ -117,22 +133,37 @@ function initconnect(){
 }
 
 function startTesting(){
+    selectedRegion.directsend();
     directtest = setInterval(function(){
         selectedRegion.directsend(); 
     }, 2000);
+    
+    selectedRegion.gasend();
     gatest = setInterval(function(){ 
         selectedRegion.gasend(); 
     }, 2000);
+
+    selectedRegion.cdnsend();
     cdntest = setInterval(function(){ 
         selectedRegion.cdnsend(); 
     }, 2000);
 }
 
 function stopTesting(){
+    clearwsInterval()
+}
+
+function clearwsInterval(){
     clearInterval(directtest)
     clearInterval(gatest)
     clearInterval(cdntest)
     document.getElementById('directlatency').innerHTML = "Latency of <b> Public Internet</b>: 0ms"
     document.getElementById('galatency').innerHTML = "Latency of Using <b> Global Accelerator</b>: 0ms"
     document.getElementById('cdnlatency').innerHTML = "Latency of Using <b> Cloudfront </b>: 0ms"
+}
+
+function clearws(){
+    if(typeof selectedRegion != 'undefined') {
+        selectedRegion.closews();
+    }
 }

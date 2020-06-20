@@ -34,9 +34,13 @@ var hongkong_directurl = 'ws://18.166.56.164'
 var hongkong_gaurl = 'ws://ad9652ca2cc3c1e36.awsglobalaccelerator.com'
 var hongkong_cdnurl = 'ws://d1o04f6y9vugw.cloudfront.net'
 
-// var bahrain_directurl = 'ws://'
-// var bahrain_gaurl = 'ws://'
-// var bahrain_cdnurl = 'ws://'
+var bahrain_directurl = 'ws://15.185.221.163'
+var bahrain_gaurl = 'ws://aa7744ef76f360514.awsglobalaccelerator.com'
+var bahrain_cdnurl = 'ws://d1j0cc75yxtio9.cloudfront.net'
+
+var mumbai_directurl = 'ws://13.235.54.236'
+var mumbai_gaurl = 'ws://a8e34f1c138b22813.awsglobalaccelerator.com'
+var mumbai_cdnurl = 'ws://d3k9fj5l1x9o9h.cloudfront.net'
 
 function getmyip(latencyType,latency){
     var url = "http://ipinfo.io/?token=cf55ec4dfcbb19"

@@ -42,6 +42,14 @@ var mumbai_directurl = 'ws://13.235.54.236'
 var mumbai_gaurl = 'ws://a8e34f1c138b22813.awsglobalaccelerator.com'
 var mumbai_cdnurl = 'ws://d3k9fj5l1x9o9h.cloudfront.net'
 
+var saopaulo_directurl = 'ws://18.230.198.235'
+var saopaulo_gaurl = 'ws://a81d404df602208fd.awsglobalaccelerator.com'
+var saopaulo_cdnurl = 'ws://d1v9dw8ito6x4j.cloudfront.net'
+
+var capetown_directurl = 'ws://13.245.12.98'
+var capetown_gaurl = 'ws://af9e7f71b11713952.awsglobalaccelerator.com'
+var capetown_cdnurl = 'ws://dncb53thlwrlb.cloudfront.net'
+
 function getmyip(latencyType,latency){
     var url = "http://ipinfo.io/?token=cf55ec4dfcbb19"
     var xhr = new XMLHttpRequest();

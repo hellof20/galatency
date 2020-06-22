@@ -34,20 +34,33 @@
     <form>
       Select AWS Region:
       <select id="region" onchange="initconnect(this)">
-        <option value="Ireland">Ireland</option>
-        <option value="Singapore">Singapore</option>
-        <option value="Frankfurt">Frankfurt</option>
-        <option value="Tokyo">Tokyo</option>
-        <option value="Virginia">Virginia</option>
-        <option value="Oregon">Oregon</option>
-        <option value="HongKong">HongKong</option>
-        <option value="Bahrain">Bahrain</option>
-        <option value="Bahrain">Mumbai</option>
-        <option value="SaoPaulo">SaoPaulo</option>
-        <option value="Paris">Paris</option>
-        <option value="London">London</option>
-        <option value="Sydeny">Sydeny</option>
-        <option value="Milan">Milan</option>
+        <optgroup label="US">
+          <option value="Virginia">Virginia</option>
+          <option value="Oregon">Oregon</option>
+        </optgroup>
+        <optgroup label="Europe">
+          <option value="Paris">Paris</option>
+          <option value="London">London</option>
+          <option value="Ireland">Ireland</option>
+          <option value="Frankfurt">Frankfurt</option>
+          <option value="Milan">Milan</option>
+        </optgroup>
+        <optgroup label="Asia Pacific">
+          <option value="Singapore">Singapore</option>
+          <option value="Tokyo">Tokyo</option>
+          <option value="HongKong">HongKong</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Sydeny">Sydeny</option>
+        </optgroup>
+        <optgroup label="Africa">
+          <option value="Capetown">Capetown</option>
+        </optgroup>
+        <optgroup label="Middle East">
+          <option value="Bahrain">Bahrain</option>
+        </optgroup>
+        <optgroup label="South America">
+          <option value="SaoPaulo">SaoPaulo</option>
+        </optgroup>       
       </select>
     </form>
 

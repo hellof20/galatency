@@ -62,6 +62,10 @@ var sydeny_directurl = 'ws://13.236.136.23'
 var sydeny_gaurl = 'ws://a9fd083614b9692e5.awsglobalaccelerator.com'
 var sydeny_cdnurl = 'ws://d2agh1d8crxnt2.cloudfront.net'
 
+var milan_directurl = 'ws://15.161.92.197'
+var milan_gaurl = 'ws://ac39c093704f5b5f2.awsglobalaccelerator.com'
+var milan_cdnurl = 'ws://d3a6swnxcx9c8d.cloudfront.net'
+
 function getmyip(latencyType,latency){
     var url = "http://ipinfo.io/?token=cf55ec4dfcbb19"
     var xhr = new XMLHttpRequest();

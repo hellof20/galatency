@@ -50,6 +50,18 @@ var capetown_directurl = 'ws://13.245.12.98'
 var capetown_gaurl = 'ws://af9e7f71b11713952.awsglobalaccelerator.com'
 var capetown_cdnurl = 'ws://dncb53thlwrlb.cloudfront.net'
 
+var london_directurl = 'ws://35.177.241.120'
+var london_gaurl = 'ws://a366fb6821b63d33d.awsglobalaccelerator.com'
+var london_cdnurl = 'ws://d1i6s46t4z30qv.cloudfront.net'
+
+var paris_directurl = 'ws://35.180.140.120'
+var paris_gaurl = 'ws://a33492a16d7a11fa8.awsglobalaccelerator.com'
+var paris_cdnurl = 'ws://den62qceqq4up.cloudfront.net'
+
+var sydeny_directurl = 'ws://13.236.136.23'
+var sydeny_gaurl = 'ws://a9fd083614b9692e5.awsglobalaccelerator.com'
+var sydeny_cdnurl = 'ws://d2agh1d8crxnt2.cloudfront.net'
+
 function getmyip(latencyType,latency){
     var url = "http://ipinfo.io/?token=cf55ec4dfcbb19"
     var xhr = new XMLHttpRequest();

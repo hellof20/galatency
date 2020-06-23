@@ -138,6 +138,8 @@ function RegionTest(directurl,gaurl,cdnurl) {
                 selectedRegion.directsend();
                 loop = loop +1;
             }else{
+                document.getElementById("starttest").disabled=false
+                document.getElementById("starttest").style.backgroundColor='#0000FF'
                 console.log('test completed')
             }
         }
@@ -160,9 +162,9 @@ window.onload = function(){
     getmyip()
     currentregion = document.getElementById("region").value
     awsregion = currentregion.toLowerCase()
-    document.getElementById('directlatency').innerHTML = "Your browser --> <b>Public Internet </b> --> AWS " + currentregion + ' Region'
-    document.getElementById('galatency').innerHTML = "Your browser --> <b> Global Accelerator </b>--> AWS " + currentregion + ' Region'
-    document.getElementById('cdnlatency').innerHTML = "Your browser --> <b> Cloudfront </b>--> AWS " + currentregion + ' Region'
+    // document.getElementById('directlatency').innerHTML = "Your browser --> <b>Public Internet </b> --> AWS " + currentregion + ' Region'
+    // document.getElementById('galatency').innerHTML = "Your browser --> <b> Global Accelerator </b>--> AWS " + currentregion + ' Region'
+    // document.getElementById('cdnlatency').innerHTML = "Your browser --> <b> Cloudfront </b>--> AWS " + currentregion + ' Region'
     selectedRegion = new RegionTest(eval(awsregion+'_directurl'),eval(awsregion+'_gaurl'),eval(awsregion+'_cdnurl'))
     selectedRegion.direct()
     selectedRegion.ga()
@@ -175,7 +177,7 @@ function changeTestType(){
     var testtype = document.getElementById("testtype").value;
     console.log(testtype)
     if(testtype == 'upload'){
-        var d1 = document.getElementById('directlatency'); 
+        var d1 = document.getElementById('ppp'); 
         d1.insertAdjacentHTML('beforebegin', '<div id="filescope"><p></p><input id="file" type="file" multiple /></div>');
     }else{
         document.getElementById("filescope").remove()
@@ -184,6 +186,8 @@ function changeTestType(){
 
 
 function startTesting(){
+    document.getElementById("starttest").disabled=true
+    document.getElementById("starttest").style.backgroundColor='#A9A9A9'
     testnum = document.getElementById("testnum").value;
     loop = 1;
     clearTable();
@@ -204,7 +208,9 @@ function startTesting(){
 }
 
 function stopTesting(){
-    stop = 1
+    loop = testnum
+    document.getElementById("starttest").disabled=false
+    document.getElementById("starttest").style.backgroundColor='#0000FF'
 }
 
 function clearTable(){
@@ -218,9 +224,9 @@ function clearTable(){
 function changeregion(){
     currentregion = document.getElementById("region").value
     awsregion = currentregion.toLowerCase()
-    document.getElementById('directlatency').innerHTML = "Your browser --> <b>Public Internet </b> --> AWS " + currentregion + ' Region'
-    document.getElementById('galatency').innerHTML = "Your browser --> <b> Global Accelerator </b>--> AWS " + currentregion + ' Region'
-    document.getElementById('cdnlatency').innerHTML = "Your browser --> <b> Cloudfront </b>--> AWS " + currentregion + ' Region'
+    // document.getElementById('directlatency').innerHTML = "Your browser --> <b>Public Internet </b> --> AWS " + currentregion + ' Region'
+    // document.getElementById('galatency').innerHTML = "Your browser --> <b> Global Accelerator </b>--> AWS " + currentregion + ' Region'
+    // document.getElementById('cdnlatency').innerHTML = "Your browser --> <b> Cloudfront </b>--> AWS " + currentregion + ' Region'
     clearws()
     clearTable()
     selectedRegion = new RegionTest(eval(awsregion+'_directurl'),eval(awsregion+'_gaurl'),eval(awsregion+'_cdnurl'))

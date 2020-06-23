@@ -31,12 +31,13 @@
     <p id='myorg'></p>
     <HR align=center width=400 color=#987cb9 SIZE=1>
     <h2>Networking Testing</h2>
-    <form>
+    
       Select Test Type:
       <select id="testtype" onchange='changeTestType(this)'>
         <option value="latency">Latency</option>
         <option value="upload">Upload File</option>
       </select>
+      <p id ='ppp'></p>
 
       Select AWS Region:
       <select id="region" onchange="changeregion(this)">
@@ -68,17 +69,18 @@
           <option value="SaoPaulo">SaoPaulo</option>
         </optgroup>       
       </select>
-    </form>
+    
 
-    <div>
+    <!-- <div>
       <p id='directlatency'></p>
       <p id='galatency'></p>
       <p id='cdnlatency'></p>
-    </div>
-    Test Num:<input type="number" id="testnum" min="1" max="100">
-    
-    <button class="button" onclick="startTesting();">START</button>
-    <button class="button" onclick="stopTesting();">STOP</button> 
+    </div> -->
+    <p></p>
+    Test Num: <input type="number" id="testnum" min="1" max="100" value=5>
+    <p></p>
+    <button id="starttest" class="button" onclick="startTesting();">START</button>
+    <button id="stoptest" class="button" onclick="stopTesting();">STOP</button> 
 
     <HR align=center width=400 color=#987cb9 SIZE=1>
     

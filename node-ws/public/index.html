@@ -30,8 +30,14 @@
     <p id='mycity'></p>
     <p id='myorg'></p>
     <HR align=center width=400 color=#987cb9 SIZE=1>
-    <h2>Networking Latency Testing</h2>
+    <h2>Networking Testing</h2>
     <form>
+      Select Test Type:
+      <select id="testtype" onchange='changeTestType(this)'>
+        <option value="latency">Latency</option>
+        <option value="upload">Upload File</option>
+      </select>
+
       Select AWS Region:
       <select id="region" onchange="initconnect(this)">
         <optgroup label="US">
@@ -75,7 +81,7 @@
 
     <HR align=center width=400 color=#987cb9 SIZE=1>
     
-    <h2>Testing Data</h2>
+    <h2>Testing Result</h2>
     <table border="1" cellpadding="6" align='center'>
       <tbody id="tbody1">
         <tr>

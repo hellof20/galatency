@@ -39,7 +39,7 @@
       </select>
 
       Select AWS Region:
-      <select id="region" onchange="initconnect(this)">
+      <select id="region" onchange="changeregion(this)">
         <optgroup label="US">
           <option value="Virginia">Virginia</option>
           <option value="Oregon">Oregon</option>
@@ -75,6 +75,7 @@
       <p id='galatency'></p>
       <p id='cdnlatency'></p>
     </div>
+    Test Num:<input type="number" id="testnum" min="1" max="100">
     
     <button class="button" onclick="startTesting();">START</button>
     <button class="button" onclick="stopTesting();">STOP</button> 
